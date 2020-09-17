@@ -31,7 +31,13 @@ namespace Team_Manager
 
         private void Add_Task_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Add Task Button Click Not Implemented");
+            TaskEditor task = new TaskEditor();
+            task.ShowDialog();
+
+            if (task.Result == Team_Manager.DialogResult.OK)
+            {
+                this.Tasks.Add(task.Task);
+            }
         }
 
         private void Edit_Task_Button_Click(object sender, RoutedEventArgs e)
@@ -46,13 +52,7 @@ namespace Team_Manager
 
         private void Employees_Button_Click(object sender, RoutedEventArgs e)
         {
-            TaskEditor task = new TaskEditor();
-            task.ShowDialog();
-
-            if (task.Result == Team_Manager.DialogResult.OK)
-            {
-                MessageBox.Show("New Task Add Not Implemented");
-            }
+            MessageBox.Show("Employees Button Click Not Implemented");
         }
     }
 }

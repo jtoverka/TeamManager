@@ -6,15 +6,25 @@
         xmlns:local="clr-namespace:Team_Manager"
         mc:Ignorable="d"
         Title="Task Editor"
-        Height="450" 
-        Width="450"
+        BorderThickness="1"
+        BorderBrush="LightGray"
+        Height="275" 
+        Width="350"
         WindowStartupLocation="CenterScreen"
         WindowStyle="ToolWindow"
         WindowState="Normal"
         Closing="Window_Closing">
-    <Grid>
+    <Grid Margin="5,5,5,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100*" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid.Resources>
@@ -24,9 +34,52 @@
                 <Setter Property="Height"
                         Value="22" />
             </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment"
+                        Value="Right" />
+                <Setter Property="VerticalAlignment"
+                        Value="Center" />
+                <Setter Property="Margin"
+                        Value="0,0,5,0" />
+            </Style>
+            <local:PercentConverter x:Key="PercentConverter" />
         </Grid.Resources>
-        
-        <UniformGrid Grid.Row="1" 
+        <TextBlock Text="Task Description:"
+                   HorizontalAlignment="Left"/>
+        <TextBox Grid.ColumnSpan="2"
+                 Height="80"
+                 Margin="100,0,0,0"
+                 TextWrapping="WrapWithOverflow"
+                 VerticalContentAlignment="Top" />
+        <TextBlock Grid.Row="1"
+                   Text="Completion:"/>
+        <ComboBox Grid.Column="1"
+                  Grid.Row="1"
+                  Height="24"
+                  SelectedIndex="{Binding Path=Task.Percent, Converter={StaticResource PercentConverter}}"
+                  VerticalContentAlignment="Center">
+            <ComboBoxItem Content="0%" />
+            <ComboBoxItem Content="10%" />
+            <ComboBoxItem Content="25%" />
+            <ComboBoxItem Content="50%" />
+            <ComboBoxItem Content="75%" />
+            <ComboBoxItem Content="90%" />
+            <ComboBoxItem Content="100%" />
+        </ComboBox>
+        <TextBlock Grid.Row="2"
+                   Text="Start Date:"/>
+        <TextBlock Grid.Row="3"
+                   Text="End Date:" />
+        <DatePicker Grid.Column="1"
+                    Grid.Row="2"
+                    SelectedDate="{Binding Path=Task.StartDate}" 
+                    VerticalAlignment="Center"/>
+        <DatePicker Grid.Column="1"
+                    Grid.Row="3"
+                    SelectedDate="{Binding Path=Task.EndDate}"
+                    VerticalAlignment="Center" />
+        <UniformGrid Grid.Row="5"
+                     Grid.ColumnSpan="2"
                      Rows="1"
                      HorizontalAlignment="Right">
             <Button Click="OK_Button_Click" 

@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="DialogResult.cs" />
     <Compile Include="Percent.cs" />
+    <Compile Include="PercentConverter.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TaskEditor.xaml.cs">
       <DependentUpon>TaskEditor.xaml</DependentUpon>

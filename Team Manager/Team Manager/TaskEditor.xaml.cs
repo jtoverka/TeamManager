@@ -11,26 +11,14 @@ namespace Team_Manager
         #region Properties
 
         /// <summary>
-        /// Result generated from this dialog box
+        /// Gets the Result generated from this dialog box
         /// </summary>
         public DialogResult Result { get; protected set; }
 
-        private Task _Task;
         /// <summary>
-        /// Task object to modify
+        /// Gets the Task Object
         /// </summary>
-        public Task Task
-        {
-            get { return this._Task; }
-            set
-            {
-                if (this._Task == value)
-                    return;
-
-                this._Task = value;
-                OnPropertyChanged("Task");
-            }
-        }
+        public Task Task{ get; protected set; }
 
         #endregion
 
@@ -39,13 +27,7 @@ namespace Team_Manager
         /// <summary>
         /// Initializes a new instance of this class
         /// </summary>
-        public TaskEditor()
-        {
-            DataContext = this;
-            this.Task = new Task();
-            Result = Team_Manager.DialogResult.None;
-            InitializeComponent();
-        }
+        public TaskEditor() : this (new Task()) { }
 
         /// <summary>
         /// Initializes a new instance of this class
@@ -89,6 +71,7 @@ namespace Team_Manager
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             Result = Team_Manager.DialogResult.Cancel;
+            this.Close();
         }
 
         /// <summary>
@@ -99,6 +82,7 @@ namespace Team_Manager
         private void OK_Button_Click(object sender, RoutedEventArgs e)
         {
             Result = Team_Manager.DialogResult.OK;
+            this.Close();
         }
 
         /// <summary>
