@@ -6,12 +6,20 @@ namespace Team_Manager
 {
     public class PercentConverter : IValueConverter
     {
+        /// <summary>
+        /// Converts a percent to a combobox index
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value.GetType() != typeof(Percent))
                 return 0;
 
-            Percent Completion = (value as Nullable<Percent>) ?? default(Percent);
+            Percent Completion = (value as Nullable<Percent>) ?? default;
 
             return Completion.Value switch
             {
@@ -25,6 +33,14 @@ namespace Team_Manager
             };
         }
 
+        /// <summary>
+        /// Converts a combobox index to a percent
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             int index = System.Convert.ToInt32(value);

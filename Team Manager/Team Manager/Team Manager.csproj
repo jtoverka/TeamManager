@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DateTimeConverter.cs" />
     <Compile Include="DialogResult.cs" />
     <Compile Include="Percent.cs" />
     <Compile Include="PercentConverter.cs" />

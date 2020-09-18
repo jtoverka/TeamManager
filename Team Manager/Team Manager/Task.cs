@@ -106,19 +106,15 @@ namespace Team_Manager
 
         #endregion
 
-        #region Methods
+        #region Delegates, Events, Handlers
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
-        #endregion
-
-        #region Delegates, Events, Handlers
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        
         #endregion
     }
 }
