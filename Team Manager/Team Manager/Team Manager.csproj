@@ -56,14 +56,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CharRange.cs" />
     <Compile Include="DateTimeConverter.cs" />
     <Compile Include="DialogResult.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeEditor.xaml.cs">
+      <DependentUpon>EmployeeEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Percent.cs" />
     <Compile Include="PercentConverter.cs" />
+    <Compile Include="Range.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="TaskEditor.xaml.cs">
       <DependentUpon>TaskEditor.xaml</DependentUpon>
     </Compile>
+    <Page Include="EmployeeEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

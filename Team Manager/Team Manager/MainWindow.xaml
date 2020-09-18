@@ -56,9 +56,12 @@
             </Button>
             <ComboBox Width="200"
                       Height="25"
-                      IsEditable="True"
+                      ItemsSource="{Binding Path=Employees}"
+                      DisplayMemberPath="EmployeeName"
+                      SelectedItem="{Binding Path=Employee}"
                       HorizontalAlignment="Center"
-                      VerticalAlignment="Center" />
+                      VerticalAlignment="Center">
+            </ComboBox>
         </UniformGrid>
         <UniformGrid Rows="1"
                      HorizontalAlignment="Right"
@@ -81,7 +84,7 @@
         <ListView x:Name="ListView"
                   Grid.Row="1"
                   Margin="10,10,10,10"
-                  ItemsSource="{Binding Tasks}"
+                  ItemsSource="{Binding Path=Employee.Tasks}"
                   SelectionMode="Single">
             <ListView.SelectedIndex>
                 <Binding Path="SelectedIndex" />

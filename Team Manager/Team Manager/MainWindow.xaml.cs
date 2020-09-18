@@ -24,9 +24,8 @@ namespace Team_Manager
     {
         #region Properties
 
-        public ObservableCollection<Task> Tasks { get; } = new ObservableCollection<Task>();
-
-
+        public ObservableCollection<Employee> Employees { get; } = new ObservableCollection<Employee>();
+        
         private int _SelectedIndex;
         public int SelectedIndex
         {
@@ -58,6 +57,23 @@ namespace Team_Manager
             }
         }
 
+        private Employee _Employee;
+        /// <summary>
+        /// 
+        /// </summary>
+        public Employee Employee
+        {
+            get { return this._Employee; }
+            set
+            {
+                if (this._Employee == value)
+                    return;
+
+                this._Employee = value;
+                OnPropertyChanged("Employee");
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -81,12 +97,18 @@ namespace Team_Manager
 
         private void Add_Task_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (this.Employee == null)
+            {
+                MessageBox.Show("Select an employee to add a task");
+                return;
+            }
+                
             TaskEditor task = new TaskEditor();
             task.ShowDialog();
 
             if (task.Result == Team_Manager.DialogResult.OK)
             {
-                this.Tasks.Add(task.Task);
+                this.Employee.Tasks.Add(task.Task);
                 this.SelectedItem = task.Task;
             }
         }
@@ -115,9 +137,9 @@ namespace Team_Manager
 
         private void Delete_Task_Button_Click(object sender, RoutedEventArgs e)
         {
-            bool deduct = this.Tasks.IndexOf(this.SelectedItem) == this.Tasks.Count - 1;
-                
-            this.Tasks.Remove(this.SelectedItem);
+            bool deduct = this.Employee.Tasks.IndexOf(this.SelectedItem) == this.Employee.Tasks.Count - 1;
+            
+            this.Employee.Tasks.Remove(this.SelectedItem);
 
             if (deduct)
                 this.SelectedIndex--;
@@ -125,9 +147,26 @@ namespace Team_Manager
 
         private void Employees_Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Employees Button Click Not Implemented");
+            EmployeeEditor editor = new EmployeeEditor();
+
+            foreach (Employee employee in this.Employees)
+            {
+                editor.Employees.Add(employee);
+            }
+
+            editor.ShowDialog();
+
+            if (editor.Result == Team_Manager.DialogResult.OK)
+            {
+                this.Employees.Clear();
+                foreach (Employee employee in editor.Employees)
+                {
+                    this.Employees.Add(employee);
+                }
+            }
         }
 
         #endregion
+
     }
 }
