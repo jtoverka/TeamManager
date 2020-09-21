@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Team_Manager"
         mc:Ignorable="d"
         Title="Employee Editor" Height="500" Width="300"
+        BorderBrush="Black"
+        BorderThickness="1"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
         WindowStyle="ToolWindow"

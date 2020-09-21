@@ -12,7 +12,8 @@
         Width="800"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        Icon="/logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
