@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         MinHeight="450"
         MinWidth="800"
-        Title="Team Manager" 
-        Height="450" 
+        Title="Team Manager"
+        Height="450"
         Width="800"
         WindowStartupLocation="CenterScreen"
-        WindowState="Normal">
+        WindowState="Normal"
+        Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -53,6 +54,9 @@
                         </Setter>
                     </Style>
                 </Button.Style>
+                <Button.IsEnabled>
+                    <Binding Path="ReadWrite" />
+                </Button.IsEnabled>
             </Button>
             <ComboBox Width="200"
                       Height="25"
@@ -71,15 +75,27 @@
                     Content="Add Task"
                     Height="22"
                     Width="112"
-                    Margin="5,0,5,0" />
+                    Margin="5,0,5,0">
+                <Button.IsEnabled>
+                    <Binding Path="ReadWrite" />
+                </Button.IsEnabled>
+            </Button>
             <Button Click="Edit_Task_Button_Click"
                     Content="Edit Task"
                     Height="22"
-                    Width="112" />
+                    Width="112">
+                <Button.IsEnabled>
+                    <Binding Path="ReadWrite" />
+                </Button.IsEnabled>
+            </Button>
             <Button Click="Delete_Task_Button_Click"
                     Content="Delete Task"
                     Height="22"
-                    Width="112" />
+                    Width="112">
+                <Button.IsEnabled>
+                    <Binding Path="ReadWrite" />
+                </Button.IsEnabled>
+            </Button>
         </UniformGrid>
         <ListView x:Name="ListView"
                   Grid.Row="1"

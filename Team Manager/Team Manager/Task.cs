@@ -1,8 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace Team_Manager
 {
+    /// <summary>
+    /// A task for an employee
+    /// </summary>
+    [Serializable]
     public class Task : INotifyPropertyChanged
     {
         #region Properties
@@ -11,6 +16,7 @@ namespace Team_Manager
         /// <summary>
         /// Gets or Sets the task description.
         /// </summary>
+        [XmlElement("Description")]
         public string Description
         {
             get { return this._Description; }
@@ -28,6 +34,7 @@ namespace Team_Manager
         /// <summary>
         /// Gets or Sets the percent completion
         /// </summary>
+        [XmlElement("Percent")]
         public Percent Percent
         {
             get { return this._Percent; }
@@ -45,6 +52,7 @@ namespace Team_Manager
         /// <summary>
         /// Gets or Sets the start date
         /// </summary>
+        [XmlElement("StartDate")]
         public DateTime StartDate
         {
             get { return this._StartDate; }
@@ -62,6 +70,7 @@ namespace Team_Manager
         /// <summary>
         /// Gets or Sets the end date
         /// </summary>
+        [XmlElement("EndDate")]
         public DateTime EndDate
         {
             get { return this._EndDate; }

@@ -7,6 +7,7 @@ namespace Team_Manager
     /// <summary>
     /// Represents the base class for all Range objects.
     /// </summary>
+    [XmlInclude(typeof(CharRange))]
     [Serializable]
     public abstract class Range
     {
